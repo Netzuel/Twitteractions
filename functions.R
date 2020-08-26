@@ -1,7 +1,7 @@
 library(rtweet)
 library(tidyverse)
 library(httr)
-library(jpeg)
+library(imager)
 
 grant_access <- function(path_to_file){
   tryCatch(
@@ -39,9 +39,8 @@ download_profile_photo <- function(username, downloads_path, show_image = FALSE)
     }
     
     if(show_image == TRUE){
-      jj <- readJPEG(paste0(downloads_path, "/", username, "_photo.jpg"), native=TRUE)
-      plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
-      rasterImage(jj,0,0,1,1)
+      im <- load.image(paste0(downloads_path, "/", username, "_photo.jpg"))
+      plot(im, ann = FALSE, axes = FALSE)
     }
   }
 }
