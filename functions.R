@@ -35,7 +35,7 @@ download_profile_photo <- function(username, downloads_path, show_image = FALSE)
     else{
       profile_image_url <- user_info[[which(names(user_info) == "profile_image_url")]]
       profile_image_url <- str_replace_all(profile_image_url, "_normal", "")
-      GET(profile_image_url, write_disk(paste0(downloads_path, "/", username, "_photo.jpg")))
+      GET(profile_image_url, write_disk(paste0(downloads_path, "/", username, "_photo.jpg"), overwrite = TRUE))
     }
     
     if(show_image == TRUE){
